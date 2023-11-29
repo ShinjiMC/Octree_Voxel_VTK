@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/run/media/ShinjiMC/4CCE98CFCE98B326/Proyects/Octree",
-      "program": "/run/media/ShinjiMC/4CCE98CFCE98B326/Proyects/Octree/build/Debug/outDebug",
+      "cwd": "/home/ShinjiMC/Downloads/Octree_Voxel_VTK",
+      "program": "/home/ShinjiMC/Downloads/Octree_Voxel_VTK/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
