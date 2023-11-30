@@ -3,9 +3,10 @@
 #include <fstream>
 #include <sstream>
 #include "../Reader/Reader.hpp"
+#include "../Vtk_Builder/vtk_builder.hpp"
 
 // Función para leer los puntos desde el archivo CSV y realizar pruebas EXPECT_TRUE
-void testPointsInOctree(const std::string &filename, Octree &octree)
+void testPointsOctree(const std::string &filename, Octree &octree)
 {
     std::ifstream file(filename);
     if (!file.is_open())
@@ -33,29 +34,38 @@ void testPointsInOctree(const std::string &filename, Octree &octree)
     file.close();
 }
 
+void testLoadRenderInteractClear(Vtk_Builder &vtkBuilder, const Octree &octree, int option)
+{
+    ASSERT_NO_THROW({
+        vtkBuilder.loadOctree(octree, option);
+        vtkBuilder.render();
+        vtkBuilder.startInteractor();
+        vtkBuilder.clear();
+    });
+}
+
 TEST(OctreeTest, PointsFromCSVTest_1)
 {
     Octree octree;
     Reader csv;
+    Vtk_Builder vtkBuilder;
     octree = csv.readAndConvert(1);
     std::string filename = "../Resources/points1.csv";
-    testPointsInOctree(filename, octree);
+    testPointsOctree(filename, octree);
+    testLoadRenderInteractClear(vtkBuilder, octree, 1);
+    testLoadRenderInteractClear(vtkBuilder, octree, 2);
+    testLoadRenderInteractClear(vtkBuilder, octree, 3);
 }
 
 TEST(OctreeTest, PointsFromCSVTest_2)
 {
     Octree octree;
     Reader csv;
+    Vtk_Builder vtkBuilder;
     octree = csv.readAndConvert(2);
     std::string filename = "../Resources/points2.csv";
-    testPointsInOctree(filename, octree);
-}
-
-TEST(OctreeTest, PointsFromCSVTest_3)
-{
-    Octree octree;
-    Reader csv;
-    octree = csv.readAndConvert(3);
-    std::string filename = "../Resources/points3.csv";
-    testPointsInOctree(filename, octree);
+    testPointsOctree(filename, octree);
+    testLoadRenderInteractClear(vtkBuilder, octree, 1);
+    testLoadRenderInteractClear(vtkBuilder, octree, 2);
+    testLoadRenderInteractClear(vtkBuilder, octree, 3);
 }

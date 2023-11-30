@@ -15,31 +15,22 @@ int main(int argc, char **argv)
         int option;
         Reader csv;
         Octree octree;
-        Vtk_Builder vtkBuilder;
         int n;
-
+        Vtk_Builder vtkBuilder;
         std::cout << "Seleccione una opcion:" << std::endl;
         std::cout << "1. Gato" << std::endl;
         std::cout << "2. Dragon" << std::endl;
-        std::cout << "3. Five Points" << std::endl;
-        std::cout << "4. GTEST" << std::endl;
+        std::cout << "3. GTEST" << std::endl;
         std::cin >> option;
         if (option == 1)
         {
             octree = csv.readAndConvert(1);
-            vtkBuilder.loadOctree(octree);
         }
         else if (option == 2)
         {
             octree = csv.readAndConvert(2);
-            vtkBuilder.loadOctree(octree);
         }
         else if (option == 3)
-        {
-            octree = csv.readAndConvert(3);
-            vtkBuilder.loadOctree(octree);
-        }
-        else if (option == 4)
         {
             testing::InitGoogleTest();
             return RUN_ALL_TESTS();
@@ -56,8 +47,10 @@ int main(int argc, char **argv)
             std::cout << "\nSeleccione una operación:" << std::endl;
             std::cout << "1. Imprimir Octree" << std::endl;
             std::cout << "2. Buscar punto" << std::endl;
-            std::cout << "3. Graph in VTK" << std::endl;
-            std::cout << "4. Salir" << std::endl;
+            std::cout << "3. Graph Voxels in VTK" << std::endl;
+            std::cout << "4. Graph Points in VTK" << std::endl;
+            std::cout << "5. Graph Voxels and Points in VTK" << std::endl;
+            std::cout << "6. Salir" << std::endl;
             std::cin >> choice;
 
             switch (choice)
@@ -72,17 +65,31 @@ int main(int argc, char **argv)
                 octree.find(Vec3D(x, y, z)) ? std::cout << "El punto existe en el Octree." << std::endl : std::cout << "El punto no existe en el Octree." << std::endl;
                 break;
             case 3:
+                vtkBuilder.loadOctree(octree, 1);
                 vtkBuilder.render();
                 vtkBuilder.startInteractor();
+                vtkBuilder.clear();
                 break;
             case 4:
+                vtkBuilder.loadOctree(octree, 2);
+                vtkBuilder.render();
+                vtkBuilder.startInteractor();
+                vtkBuilder.clear();
+                break;
+            case 5:
+                vtkBuilder.loadOctree(octree, 3);
+                vtkBuilder.render();
+                vtkBuilder.startInteractor();
+                vtkBuilder.clear();
+                break;
+            case 6:
                 std::cout << "Saliendo..." << std::endl;
                 break;
             default:
                 std::cout << "Opción inválida." << std::endl;
                 break;
             }
-        } while (choice != 3);
+        } while (choice != 6);
     }
     return 0;
 }
