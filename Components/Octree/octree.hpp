@@ -1,7 +1,7 @@
 #ifndef OCTREE_HPP
 #define OCTREE_HPP
 
-#include "vec3d.hpp"
+#include "../Vec3D/vec3d.hpp"
 
 struct Octant
 {

@@ -1,9 +1,9 @@
-#include "converter.hpp"
-
+#include "Components/Reader/Reader.hpp"
+#include <iostream>
 int main()
 {
     int option;
-    Converter csv;
+    Reader csv;
     Octree octree;
     int n;
 
@@ -12,7 +12,6 @@ int main()
     std::cout << "2. Dragon" << std::endl;
     std::cout << "3. TEST" << std::endl;
     std::cin >> option;
-    // https://github.com/bertaye/Octree/blob/main/example_main.cpp
     if (option == 1)
         octree = csv.readAndConvert(1);
     else if (option == 2)

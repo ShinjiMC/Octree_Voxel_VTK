@@ -1,20 +1,11 @@
-#ifndef CONVERTER_HPP
-#define CONVERTER_HPP
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include "vec3d.hpp"
-#include "octree.hpp"
-class Converter
-{
-public:
-    Octree readAndConvert(int fileNumber);
-};
+#include "Reader.hpp"
 
-Octree Converter::readAndConvert(int fileNumber)
+Octree Reader::readAndConvert(int fileNumber)
 {
-    std::string filename = "points" + std::to_string(fileNumber) + ".csv";
+    std::string filename = "../Resources/points" + std::to_string(fileNumber) + ".csv";
     std::ifstream file(filename);
     if (!file.is_open())
     {
@@ -23,7 +14,6 @@ Octree Converter::readAndConvert(int fileNumber)
     }
     Octree octree;
     std::string line;
-    int c = 1;
     while (std::getline(file, line))
     {
         std::istringstream ss(line);
@@ -36,10 +26,7 @@ Octree Converter::readAndConvert(int fileNumber)
         if (std::getline(ss, token, '\n'))
             z = std::stoi(token);
         octree.insert(Vec3D(x, y, z));
-        // std::cout << "Line: " << c++ << std::endl;
     }
     file.close();
     return octree;
 }
-
-#endif // CONVERTER_HPP
