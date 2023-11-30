@@ -22,6 +22,7 @@ public:
     void insert(const Vec3D &pos);
     bool find(const Vec3D &pos) const;
     void print();
+    Octant *getroot() const;
 
 private:
     void insertion(Octant *&octant, Vec3D pos, double h, Vec3D NewmidCube);

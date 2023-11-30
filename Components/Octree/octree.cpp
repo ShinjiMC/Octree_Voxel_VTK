@@ -159,3 +159,8 @@ void Octree::printOctant(Octant *octant, int level)
         printOctant(octant->octantes[i], level + 1);
     }
 }
+
+Octant *Octree::getroot() const
+{
+    return this->root;
+}
