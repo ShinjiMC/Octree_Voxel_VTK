@@ -5,7 +5,7 @@ class Vec3D
 {
 public:
     Vec3D(double xVal, double yVal, double zVal) : x(xVal), y(yVal), z(zVal) {}
-    Vec3D() : x(0), y(0), z(0){};
+    Vec3D() : x(0.0), y(0.0), z(0.0){};
     ~Vec3D() = default;
 
     double getX() const { return x; }

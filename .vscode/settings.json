@@ -38,10 +38,7 @@
   "C_Cpp_Runner.compilerArgs": [],
   "C_Cpp_Runner.linkerArgs": [],
   "C_Cpp_Runner.includePaths": [],
-  "C_Cpp_Runner.includeSearch": [
-    "*",
-    "**/*"
-  ],
+  "C_Cpp_Runner.includeSearch": ["*", "**/*"],
   "C_Cpp_Runner.excludeSearch": [
     "**/build",
     "**/build/**",
@@ -130,6 +127,11 @@
     "typeindex": "cpp",
     "valarray": "cpp",
     "variant": "cpp",
-    "unordered_set": "cpp"
+    "unordered_set": "cpp",
+    "any": "cpp",
+    "bitset": "cpp",
+    "codecvt": "cpp",
+    "forward_list": "cpp",
+    "future": "cpp"
   }
 }
