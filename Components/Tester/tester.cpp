@@ -69,3 +69,43 @@ TEST(OctreeTest, PointsFromCSVTest_2)
     testLoadRenderInteractClear(vtkBuilder, octree, 2);
     testLoadRenderInteractClear(vtkBuilder, octree, 3);
 }
+
+TEST(OctreeTest, PointsFromCSVTest_3)
+{
+    Octree octree;
+    Reader csv;
+    Vtk_Builder vtkBuilder;
+    octree = csv.readAndConvert(3);
+    std::string filename = "../Resources/points3.csv";
+    testPointsOctree(filename, octree);
+}
+
+TEST(OctreeTest, PointsFromCSVTest_4)
+{
+    Octree octree;
+    Reader csv;
+    Vtk_Builder vtkBuilder;
+    octree = csv.readAndConvert(4);
+    std::string filename = "../Resources/points4.csv";
+    testPointsOctree(filename, octree);
+}
+
+TEST(OctreeTest, PointsFromCSVTest_5)
+{
+    Octree octree;
+    Reader csv;
+    Vtk_Builder vtkBuilder;
+    octree = csv.readAndConvert(5);
+    std::string filename = "../Resources/points5.csv";
+    testPointsOctree(filename, octree);
+}
+
+TEST(OctreeTest, PointsFromCSVTest_6)
+{
+    Octree octree;
+    Reader csv;
+    Vtk_Builder vtkBuilder;
+    octree = csv.readAndConvert(6);
+    std::string filename = "../Resources/points6.csv";
+    testPointsOctree(filename, octree);
+}
